@@ -1,5 +1,9 @@
 <template>
-   <div class="todo-card">
+   <div
+      class="todo-card"
+      :class="{ 'done-todo-card': isDone }"
+      @click="toggleCardState"
+   >
       <p class="todo-item">Your Todos Will be Here</p>
       <span class="button-container">
          <button>EDIT</button>
@@ -10,6 +14,10 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+//vuex
+import { useStore } from 'vuex';
+//vue imports
+import { ref } from 'vue';
 
 @Options({
    props: {
@@ -17,7 +25,25 @@ import { Options, Vue } from 'vue-class-component';
    },
 })
 export default class HelloWorld extends Vue {
-   // msg!: string
+   toggleCardState: any;
+   isDone: any;
+   setup() {
+      const store = useStore();
+
+      const toggleCardState = () => {
+         isDone.value = !isDone.value;
+         if (isDone.value) {
+            store.commit('addToDoneTodos', cardText.value);
+         } else {
+            store.commit('removeFromDoneTodos', cardText.value);
+         }
+      };
+
+      const cardText = ref('Your Todo Item');
+      const isDone = ref(false);
+
+      return { toggleCardState, isDone, cardText };
+   }
 }
 </script>
 
