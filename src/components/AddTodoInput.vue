@@ -23,8 +23,7 @@ import { ref } from 'vue';
 const value = ref<string>('');
 
 const handleSubmit = () => {
-   let x;
-   x = value.value;
+   value.value = '';
 };
 </script>
 
