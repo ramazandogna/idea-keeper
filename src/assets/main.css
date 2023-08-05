@@ -16,7 +16,7 @@
    color: var(--secondary);
 }
 body {
-   background: #fafafa;
+   background: #efebe7;
    min-height: 100vh;
 }
 a {
@@ -34,11 +34,11 @@ button,
    cursor: pointer;
    display: inline-block;
    color: #fafafa;
-   transition: all 0.3s;
+   transition: all 0.5s ease-in;
 }
 button:hover,
 .btn:hover {
-   transition: all 0.3s;
+   transition: all 0.5s ease-out;
    background: var(--secondary);
    color: white;
 }
@@ -47,29 +47,6 @@ button:disabled {
    color: var(--primary);
    background: var(--secondary);
    cursor: not-allowed;
-}
-
-/* forms */
-form {
-   width: 400px;
-   margin: 0 auto;
-   padding: 30px;
-   border-radius: 8px;
-   box-shadow: 2px 4px 6px rgba(50, 50, 50, 0.05);
-   border: 1px solid var(--secondary);
-   background: white;
-}
-input,
-textarea {
-   border: 0;
-   border-bottom: 1px solid var(--secondary);
-   padding: 10px;
-   outline: none;
-   display: block;
-   width: 250px;
-   max-width: 100%;
-   box-sizing: border-box;
-   margin: 20px auto;
 }
 
 #app {
@@ -103,13 +80,12 @@ nav a.router-link-exact-active {
 .button-container {
    display: flex;
    justify-content: center;
-}
-.app {
-   display: flex;
-   justify-content: center;
-   min-height: 100vh;
+   gap: 10px;
 }
 
 .container {
-   max-width: 1200px;
+   position: relative;
+   width: 1200px;
+   margin: auto;
+   padding: 0 1rem;
 }

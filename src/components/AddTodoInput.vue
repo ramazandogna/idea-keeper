@@ -1,15 +1,32 @@
 <template>
-   <div class="webflow-style-input">
+   <form
+      @submit.prevent="handleSubmit"
+      class="webflow-style-input"
+   >
       <input
          class=""
-         type="email"
+         type="text"
+         v-model="value"
          placeholder="Write something."
       />
       <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-   </div>
+   </form>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Options, Vue } from 'vue-class-component';
+//icon imports
+import '@fortawesome/fontawesome-free/css/all.min.css';
+//vue imports
+import { ref } from 'vue';
+
+const value = ref<string>('');
+
+const handleSubmit = () => {
+   let x;
+   x = value.value;
+};
+</script>
 
 <style scoped>
 :root {
@@ -27,8 +44,6 @@
       background-position: 100% 0;
    }
 }
-
-/* .webflow-style-input */
 .webflow-style-input {
    position: relative;
    display: flex;
@@ -36,6 +51,8 @@
    width: 90%;
    max-width: 400px;
    margin: 0 auto;
+   margin-bottom: 2rem;
+
    border-radius: 2px;
    padding: 0.4rem 0.8rem 0.6rem;
    background: linear-gradient(
@@ -77,5 +94,35 @@
 
 .webflow-style-input button:hover {
    color: var(--input-text-active);
+}
+
+/* font style reset */
+
+input {
+   border-style: none;
+   background: transparent;
+   outline: none;
+}
+button {
+   padding: 0;
+   background: none;
+   border: none;
+   outline: none;
+   transform: translate(0);
+}
+
+button:hover {
+   background: initial;
+}
+
+/* .webflow-style-input button */
+.webflow-style-input button {
+   /* ... diğer stiller ... */
+   transition: all 0.3s ease-in-out; /* Transform için geçiş eklendi */
+}
+
+.webflow-style-input:hover button {
+   color: var(--primary);
+   transform: translateX(5px); /* Sağa 5px kaydırma efekti */
 }
 </style>
