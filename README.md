@@ -1,19 +1,27 @@
-# idea-keeper
+# Idea Keeper
+
+Note app where you can store anything you want. This is not just a basic todo app. I might add Firebase in the future
 
 ## Project setup
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and Start project
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Demo
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Soon
+
+## Techs
+
+Vue (Router), Vuex, Ts and CSS.
+
+## Screenshots
+
+Soon
