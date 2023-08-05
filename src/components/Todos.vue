@@ -4,10 +4,15 @@
       :class="{ 'done-todo-card': isDone }"
       @click="toggleCardState"
    >
-      <p class="todo-item">Your Todos Will be Here</p>
+      <p class="todo-item">{{ todo }}</p>
       <span class="button-container">
          <button>EDIT</button>
-         <button class="delete-button">DELETE</button>
+         <button
+            @click="store.removeTodo"
+            class="delete-button"
+         >
+            DELETE
+         </button>
       </span>
    </div>
 </template>
@@ -21,28 +26,34 @@ import { ref } from 'vue';
 
 @Options({
    props: {
-      // msg: String
+      todo: String,
    },
 })
 export default class HelloWorld extends Vue {
    toggleCardState: any;
    isDone: any;
-   setup() {
+   todo: any;
+   removeTodo: ((payload: MouseEvent) => void) | undefined;
+   setup(props: { todo: any }) {
       const store = useStore();
 
+      const removeTodo = () => {
+         store.commit('removeFromTodos', this.cardText.value); // Change 'this.todo.value' to 'this.cardText.value'
+      };
+
       const toggleCardState = () => {
-         isDone.value = !isDone.value;
-         if (isDone.value) {
-            store.commit('addToDoneTodos', cardText.value);
+         this.isDone.value = !this.isDone.value; // Added 'this.' before 'isDone.value'
+         if (this.isDone.value) {
+            store.commit('addToDoneTodos', this.cardText.value);
          } else {
-            store.commit('removeFromDoneTodos', cardText.value);
+            store.commit('removeFromDoneTodos', this.cardText.value);
          }
       };
 
-      const cardText = ref('Your Todo Item');
+      const cardText = ref(props.todo);
       const isDone = ref(false);
 
-      return { toggleCardState, isDone, cardText };
+      return { toggleCardState, isDone, cardText, removeTodo }; // Assign 'removeTodo' to the returned object
    }
 }
 </script>

@@ -4,10 +4,11 @@
 
       <AddTodoInput />
 
-      <Todos />
-      <Todos />
-      <Todos />
-      <Todos />
+      <Todos
+         v-for="(todo, index) in todos"
+         :key="index"
+         :todo="todo"
+      />
    </div>
 </template>
 
@@ -16,11 +17,16 @@ import { Options, Vue } from 'vue-class-component';
 //component import
 import Todos from '../components/Todos.vue';
 import AddTodoInput from '../components/AddTodoInput.vue';
+//vuex
+import { mapState } from 'vuex';
 
 @Options({
    components: { Todos, AddTodoInput },
+   computed: mapState(['todos']),
 })
-export default class TodoView extends Vue {}
+export default class TodoView extends Vue {
+   todos: any;
+}
 </script>
 
 <style scoped>

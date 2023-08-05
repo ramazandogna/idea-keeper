@@ -19,11 +19,16 @@ import { Options, Vue } from 'vue-class-component';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 //vue imports
 import { ref } from 'vue';
+import store from '@/store';
 
 const value = ref<string>('');
 
 const handleSubmit = () => {
-   value.value = '';
+   if (value.value.trim() !== '') {
+      store.commit('addToTodos', value.value);
+      console.log(value.value);
+      value.value = '';
+   }
 };
 </script>
 
