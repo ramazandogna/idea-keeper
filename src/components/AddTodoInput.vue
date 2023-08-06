@@ -7,7 +7,7 @@
          class=""
          type="text"
          v-model="value"
-         placeholder="Write something."
+         placeholder="Enter a task."
       />
       <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
    </form>

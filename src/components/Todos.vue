@@ -10,7 +10,6 @@
          {{ text }}
       </p>
       <span class="button-container">
-         <button>EDIT</button>
          <button
             @click="removeTodo"
             class="delete-button"
@@ -27,13 +26,14 @@ import { useStore } from 'vuex';
 const props = defineProps<{
    todo: String;
    text: String;
+   isDone: boolean;
+   id: String;
 }>();
 
 const store = useStore();
 
 const removeTodo = () => {
    store.commit('removeFromTodos', props.todo.id);
-   console.log('çalıştı');
 };
 
 const toggleComplete = () => {
@@ -62,6 +62,18 @@ const toggleComplete = () => {
 .todo-item {
    font-size: 18px;
    cursor: pointer;
+   padding: 0.5rem;
+   text-align: left;
+   white-space: pre-line;
+
+   overflow: hidden;
+}
+
+.todo-item::after {
+   content: '...';
+   position: absolute;
+   bottom: 0;
+   right: 0;
    padding: 0.5rem;
 }
 

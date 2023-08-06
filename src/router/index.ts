@@ -1,20 +1,20 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import TodoView from '../views/TodoView.vue';
+import HomeView from '../views/HomeView.vue';
 const routes: Array<RouteRecordRaw> = [
    {
       path: '/',
       name: 'home',
-      component: TodoView,
+      component: HomeView,
    },
    {
-      path: '/donetodos',
-      name: 'donetodos',
-      component: () => import('../views/DoneTodes.vue'),
+      path: '/done',
+      name: 'done',
+      component: () => import('../views/DoneView.vue'),
    },
    {
-      path: '/continuetodos',
-      name: 'continuetodos',
-      component: () => import('../views/ContinueTodos.vue'),
+      path: '/continue',
+      name: 'continue',
+      component: () => import('../views/ContinueView.vue'),
    },
 ];
 

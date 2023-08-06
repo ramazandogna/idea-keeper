@@ -3,8 +3,8 @@
       <nav>
          <div class="container">
             <router-link to="/">Todos</router-link> |
-            <router-link to="/continuetodos">Continue</router-link> |
-            <router-link to="/donetodos">Done</router-link>
+            <router-link to="/continue">Continue</router-link> |
+            <router-link to="/done">Done</router-link>
          </div>
       </nav>
    </div>
