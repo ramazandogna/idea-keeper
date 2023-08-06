@@ -14,19 +14,25 @@
 </template>
 
 <script setup lang="ts">
-import { Options, Vue } from 'vue-class-component';
 //icon imports
 import '@fortawesome/fontawesome-free/css/all.min.css';
 //vue imports
 import { ref } from 'vue';
+//store import
 import store from '@/store';
+//vuex
+import { useStore } from 'vuex';
 
 const value = ref<string>('');
+const isDone = ref<boolean>(false);
 
 const handleSubmit = () => {
    if (value.value.trim() !== '') {
-      store.commit('addToTodos', value.value);
-      console.log(value.value);
+      //eğer value.vale boşluktan ibaret yada boş değilse
+      store.commit('addToTodos', {
+         text: value.value,
+         isDone: isDone.value,
+      });
       value.value = '';
    }
 };

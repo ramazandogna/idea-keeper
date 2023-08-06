@@ -1,14 +1,18 @@
 <template>
    <div
       class="todo-card"
-      :class="{ 'done-todo-card': isDone }"
-      @click="toggleCardState"
+      :class="{ 'done-todo-card': todo.isDone }"
    >
-      <p class="todo-item">{{ todo }}</p>
+      <p
+         class="todo-item"
+         @click="toggleComplete"
+      >
+         {{ text }}
+      </p>
       <span class="button-container">
          <button>EDIT</button>
          <button
-            @click="removeTodo(todo.name)"
+            @click="removeTodo"
             class="delete-button"
          >
             DELETE
@@ -17,48 +21,24 @@
    </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-//vuex
+<script setup lang="ts">
 import { useStore } from 'vuex';
-//vue imports
-import { ref } from 'vue';
 
-@Options({
-   props: {
-      todo: String,
-   },
-})
-export default class Todos extends Vue {
-   toggleCardState: any;
-   isDone: any;
-   todo: any;
-   cardText: any;
-   removeTodoFromComponent: any;
-   store: any;
-   setup(props: { todo: any }) {
-      const store = useStore();
+const props = defineProps<{
+   todo: String;
+   text: String;
+}>();
 
-      const removeTodo = () => {
-         console.log('çalıştı');
-         store.commit('removeFromTodos', this.cardText.value); // Change 'this.todo.value' to 'this.cardText.value'
-      };
+const store = useStore();
 
-      const toggleCardState = () => {
-         this.isDone.value = !this.isDone.value; // Added 'this.' before 'isDone.value'
-         if (this.isDone.value) {
-            store.commit('addToDoneTodos', this.cardText.value);
-         } else {
-            store.commit('removeFromDoneTodos', this.cardText.value);
-         }
-      };
+const removeTodo = () => {
+   store.commit('removeFromTodos', props.todo.id);
+   console.log('çalıştı');
+};
 
-      const cardText = ref(props.todo);
-      const isDone = ref(false);
-
-      return { toggleCardState, isDone, cardText, removeTodoFromComponent: removeTodo }; // Assign 'removeTodo' to the returned object
-   }
-}
+const toggleComplete = () => {
+   store.commit('toggleIsDone', props.todo);
+};
 </script>
 
 <style scoped>
@@ -82,6 +62,7 @@ export default class Todos extends Vue {
 .todo-item {
    font-size: 18px;
    cursor: pointer;
+   padding: 0.5rem;
 }
 
 .delete-button {
@@ -90,5 +71,14 @@ export default class Todos extends Vue {
 
 .delete-button:hover {
    background: var(--warning);
+}
+
+.done-todo-card {
+   border-left: 40px solid var(--warning);
+   text-decoration: line-through;
+}
+
+.done-todo-card:hover {
+   border-left: 40px solid var(--warning);
 }
 </style>

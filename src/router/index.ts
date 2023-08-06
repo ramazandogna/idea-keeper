@@ -7,12 +7,14 @@ const routes: Array<RouteRecordRaw> = [
       component: TodoView,
    },
    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+      path: '/donetodos',
+      name: 'donetodos',
+      component: () => import('../views/DoneTodes.vue'),
+   },
+   {
+      path: '/continuetodos',
+      name: 'continuetodos',
+      component: () => import('../views/ContinueTodos.vue'),
    },
 ];
 

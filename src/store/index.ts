@@ -6,38 +6,31 @@ const savedTodos = localStorage.getItem(STORAGE_KEY);
 const initialTodos = savedTodos ? JSON.parse(savedTodos) : [];
 
 interface State {
-   todos: string[];
+   todos: { id: string; text: string; isDone: boolean }[];
    doneTodos: string[];
    cardColor: string;
 }
 
 export default createStore<State>({
    state: {
-      todos: initialTodos, // Verilerin sayfa yenilendiğinde de saklanabilmesi için initialTodos'u todos'a atıyoruz
+      todos: initialTodos,
       doneTodos: [],
       cardColor: 'var(--primary)',
    },
    getters: {},
    mutations: {
-      addToTodos(state, todo: string) {
-         state.todos.push(todo);
+      addToTodos(state, { text, isDone }: { text: string; isDone: boolean }) {
+         const id = Math.random().toString(36).substr(2, 9); // Rastgele 9 karakterlik bir id oluştur
+         state.todos.push({ id, text, isDone }); // Oluşturulan id'yi eklemeyi unutma
          localStorage.setItem(STORAGE_KEY, JSON.stringify(state.todos));
       },
-      removeFromTodos(state, todo: string) {
-         state.todos = state.todos.filter((item) => item !== todo);
+      removeFromTodos(state, todoId) {
+         state.todos = state.todos.filter((item) => item.id !== todoId);
          localStorage.setItem(STORAGE_KEY, JSON.stringify(state.todos));
       },
-      addToDoneTodes(state, todo: string) {
-         state.doneTodos.push(todo);
-         state.cardColor = 'var(--secondary)';
-         localStorage.setItem(STORAGE_KEY, JSON.stringify(state.doneTodos)); // doneTodos dizisini localStorage'a kaydediyoruz
-      },
-      removeFromDoneTodos(state, todo: string) {
-         state.doneTodos = state.doneTodos.filter((item) => item !== todo);
-         state.cardColor = 'var(--primary)';
-         localStorage.setItem(STORAGE_KEY, JSON.stringify(state.doneTodos)); // doneTodos dizisini localStorage'a kaydediyoruz
+      toggleIsDone(state, todo) {
+         todo.isDone = !todo.isDone; // todo.isDone'ı tersine çevir
+         localStorage.setItem(STORAGE_KEY, JSON.stringify(state.todos));
       },
    },
-   actions: {},
-   modules: {},
 });

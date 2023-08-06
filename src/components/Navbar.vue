@@ -2,7 +2,9 @@
    <div class="nav-container">
       <nav>
          <div class="container">
-            <router-link to="/">Todos</router-link> | <router-link to="/about">About</router-link>
+            <router-link to="/">Todos</router-link> |
+            <router-link to="/continuetodos">Continue</router-link> |
+            <router-link to="/donetodos">Done</router-link>
          </div>
       </nav>
    </div>
