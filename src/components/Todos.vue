@@ -8,7 +8,7 @@
       <span class="button-container">
          <button>EDIT</button>
          <button
-            @click="store.removeTodo"
+            @click="removeTodo(todo.name)"
             class="delete-button"
          >
             DELETE
@@ -29,15 +29,18 @@ import { ref } from 'vue';
       todo: String,
    },
 })
-export default class HelloWorld extends Vue {
+export default class Todos extends Vue {
    toggleCardState: any;
    isDone: any;
    todo: any;
-   removeTodo: ((payload: MouseEvent) => void) | undefined;
+   cardText: any;
+   removeTodoFromComponent: any;
+   store: any;
    setup(props: { todo: any }) {
       const store = useStore();
 
       const removeTodo = () => {
+         console.log('çalıştı');
          store.commit('removeFromTodos', this.cardText.value); // Change 'this.todo.value' to 'this.cardText.value'
       };
 
@@ -53,7 +56,7 @@ export default class HelloWorld extends Vue {
       const cardText = ref(props.todo);
       const isDone = ref(false);
 
-      return { toggleCardState, isDone, cardText, removeTodo }; // Assign 'removeTodo' to the returned object
+      return { toggleCardState, isDone, cardText, removeTodoFromComponent: removeTodo }; // Assign 'removeTodo' to the returned object
    }
 }
 </script>
@@ -61,7 +64,7 @@ export default class HelloWorld extends Vue {
 <style scoped>
 .todo-card {
    margin: 1rem 0;
-   padding: 1rem 4rem;
+   padding: 1rem 1rem;
    display: flex;
    justify-content: space-between;
    align-items: center;

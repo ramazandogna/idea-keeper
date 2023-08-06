@@ -1,14 +1,16 @@
 <template>
-   <div class="todo-container">
-      <h2>Todo APP</h2>
+   <div class="container">
+      <div class="todo-container">
+         <h2>Todo APP</h2>
 
-      <AddTodoInput />
+         <AddTodoInput />
 
-      <Todos
-         v-for="(todo, index) in todos"
-         :key="index"
-         :todo="todo"
-      />
+         <Todos
+            v-for="(todo, index) in todos"
+            :key="index"
+            :todo="todo"
+         />
+      </div>
    </div>
 </template>
 
@@ -30,6 +32,10 @@ export default class TodoView extends Vue {
 </script>
 
 <style scoped>
+.todo-container {
+   height: 100vh;
+   margin: 0 1rem;
+}
 h2 {
    font-size: 2.5rem;
    font-weight: 700;
