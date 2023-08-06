@@ -2,8 +2,8 @@
    <div class="nav-container">
       <nav>
          <div class="container">
-            <router-link to="/">Todos</router-link> |
-            <router-link to="/continue">Continue</router-link> |
+            <router-link to="/">Todos</router-link> &nbsp;&nbsp;|&nbsp;&nbsp;
+            <router-link to="/continue">Continue</router-link> &nbsp;&nbsp;|&nbsp;&nbsp;
             <router-link to="/done">Done</router-link>
          </div>
       </nav>
@@ -33,6 +33,7 @@ nav {
 nav a {
    font-weight: bold;
    color: #2c3e50;
+   font-size: 18px;
 }
 
 nav a.router-link-exact-active {
