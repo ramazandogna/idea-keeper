@@ -27,16 +27,16 @@ npm run serve
 
 -  **TODO 1**
 
-![App Screenshot](https://github.com/ramazandogna/idea-keeper/blob/master/src/assets/secreenshots/todo-1.png)
+<img src="https://github.com/ramazandogna/idea-keeper/blob/master/src/assets/secreenshots/todo-1.png" alt="TODO 1" height="400">
 
 -  **TODO 2**
 
-![App Screenshot](https://github.com/ramazandogna/idea-keeper/blob/master/src/assets/secreenshots/todo-2.png)
+<img src="https://github.com/ramazandogna/idea-keeper/blob/master/src/assets/secreenshots/todo-2.png" alt="TODO 2" height="400">
 
 -  **DONE**
 
-![App Screenshot](https://github.com/ramazandogna/idea-keeper/blob/master/src/assets/secreenshots/done.png)
+<img src="https://github.com/ramazandogna/idea-keeper/blob/master/src/assets/secreenshots/done.png" alt="DONE" height="400">
 
--  **CONTUNUE**
+-  **CONTINUE**
 
-![App Screenshot](https://github.com/ramazandogna/idea-keeper/blob/master/src/assets/secreenshots/continue.png)
+<img src="https://github.com/ramazandogna/idea-keeper/blob/master/src/assets/secreenshots/continue.png" alt="CONTINUE" height="400">
